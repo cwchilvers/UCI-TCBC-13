@@ -34,10 +34,10 @@ Product.init(
       validate:{
         isNumeric: true,
       }
-    },      
+    }, 
     // Get the category id from the category model
     // and link it to the product model
-    category: {
+    category_id: {
       type: DataTypes.INTEGER,
       references:{
         model: 'category',
@@ -51,7 +51,6 @@ Product.init(
       references: {
         model: 'tag',
         key: 'id',
-        
       }
     }
   },
