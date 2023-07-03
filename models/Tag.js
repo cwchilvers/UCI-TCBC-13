@@ -6,7 +6,7 @@ class Tag extends Model {}
 
 Tag.init(
   {
-    // Define columns
+    // ID, Tag Name, Products
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
