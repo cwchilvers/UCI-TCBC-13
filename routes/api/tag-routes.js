@@ -59,8 +59,20 @@ router.post('/', (req, res) => {
   });
 });
 
+// update a tag's name by its `id` value
 router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
+  Tag.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+
+  // Send response to client
+  .then((tag) => res.json(tag))   // Send category to client
+  .catch((err) => {                         // Log error to client
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.delete('/:id', (req, res) => {
