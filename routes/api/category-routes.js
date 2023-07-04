@@ -13,6 +13,8 @@ router.get('/', (req, res) => {
       },
     ],
   })
+
+  // Send response to client
   .then((categories) => res.json(categories)) // Send all categories to client
   .catch((err) => {                           // Log error to client
     console.log(err);
@@ -33,6 +35,8 @@ router.get('/:id', (req, res) => {
       },
     ],
   })
+
+  // Send response to client
   .then((category) => res.json(category))   // Send category to client
   .catch((err) => {                         // Log error to client
     console.log(err);
@@ -40,8 +44,21 @@ router.get('/:id', (req, res) => {
   });
 });
 
+// create a new category 
 router.post('/', (req, res) => {
-  // create a new category
+  // check if category already exists or else create it
+  Category.findOrCreate({
+    where: {
+      category_name: req.body.category_name,
+    },
+  })
+
+  // Send response to client
+  .then((category) => res.json(category))   // Send category to client
+  .catch((err) => {                         // Log error to client
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.put('/:id', (req, res) => {

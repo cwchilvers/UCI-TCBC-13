@@ -33,6 +33,8 @@ router.get('/:id', (req, res) => {
       },
     ],
   })
+
+  // Send response to client
   .then((tag) => res.json(tag))     // Send tag to client
   .catch((err) => {                 // Log error to client
     console.log(err);

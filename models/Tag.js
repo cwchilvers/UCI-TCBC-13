@@ -5,6 +5,7 @@ const sequelize = require('../config/connection.js');
 class Tag extends Model {}
 
 Tag.init(
+  // Tag's ID, Name
   {
     id: {
       type: DataTypes.INTEGER,
