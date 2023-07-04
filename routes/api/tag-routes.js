@@ -42,8 +42,21 @@ router.get('/:id', (req, res) => {
   });
 });
 
+// create a new tag
 router.post('/', (req, res) => {
-  // create a new tag
+  // check if tag already exists or else create it
+  Tag.findOrCreate({
+    where: {
+      tag_name: req.body.tag_name,
+    },
+  })
+
+  // Send response to client
+  .then((tag) => res.json(tag))     // Send tag to client
+  .catch((err) => {                 // Log error to client
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.put('/:id', (req, res) => {
