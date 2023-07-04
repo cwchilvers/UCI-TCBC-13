@@ -127,8 +127,16 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// delete one product by its `id` value
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+  Product.destroy({ where: { id: req.params.id } })
+
+  // Send response to client
+  .then((product) => res.json(product))   // Send product to client
+  .catch((err) => {                       // Log error to client
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;

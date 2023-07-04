@@ -75,8 +75,17 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// delete one tag by its `id` value
 router.delete('/:id', (req, res) => {
-  // delete on tag by its `id` value
+  Tag.destroy({ where: { id: req.params.id } })
+
+  // Send response to client
+  .then((tag) => res.json(tag))   // Send product to client
+  .catch((err) => {                       // Log error to client
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
+
 
 module.exports = router;

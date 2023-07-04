@@ -77,8 +77,16 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// delete a category by its `id` value
 router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
+  Category.destroy({ where: { id: req.params.id } })
+
+  // Send response to client
+  .then((category) => res.json(category))   // Send product to client
+  .catch((err) => {                       // Log error to client
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;
