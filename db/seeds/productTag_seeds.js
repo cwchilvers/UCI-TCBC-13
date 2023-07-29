@@ -1,4 +1,4 @@
-const { ProductTag } = require('../models/models');
+const { ProductTag } = require('../../models/models');
 
 const productTagData = [
   {
@@ -51,6 +51,4 @@ const productTagData = [
   },
 ];
 
-const seedProductTags = () => ProductTag.bulkCreate(productTagData);
-
-module.exports = seedProductTags;
+module.exports = () => ProductTag.bulkCreate(productTagData);

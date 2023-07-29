@@ -1,24 +1,19 @@
 {
-  "name": "e-commerce back end",
+  "name": "e-commerce back-end",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "seed": "node seeds/seeds.js"
+    "start": "node src/server.js",
+    "seed": "node db/seeds/seed.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/cwchilvers/E-Commerce-Back-End.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.3"
-  },
+  "author": "Chandler Chilvers",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.18.2",
